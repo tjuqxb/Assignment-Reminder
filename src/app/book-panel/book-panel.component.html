@@ -21,7 +21,7 @@
           <mat-label>Minutes</mat-label>
           <input formControlName="mins" matInput placeholder="Minutes">
           <mat-error *ngIf="service.form.controls['mins'].errors?.required"> This field is mandatory.</mat-error>
-          <mat-error *ngIf="service.form.controls['mins'].errors?.invalidMinutes">Minutes should be a number between 1 to 59.</mat-error>
+          <mat-error *ngIf="service.form.controls['mins'].errors?.invalidMinutes">Minutes should be a number between 0 to 59.</mat-error>
         </mat-form-field>
       </mat-grid-tile>
       <mat-grid-tile>

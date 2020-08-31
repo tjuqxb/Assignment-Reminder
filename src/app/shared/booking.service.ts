@@ -35,7 +35,7 @@ export class BookingService {
     let mins = control.value;
     if (mins === '') return null;
     let parsed = parseInt(mins, 10);
-    let inValid: boolean = isNaN(parsed) || (parsed < 1 || parsed > 59);
+    let inValid: boolean = isNaN(parsed) || (parsed < 0 || parsed > 59);
     return inValid ? {invalidMinutes: {value: control.value}} : null;
   }
 
