@@ -1,0 +1,24 @@
+.fill-space {
+  flex: 1 1 auto;
+}
+
+.normal-form {
+  margin: 10px;
+
+}
+
+mat-form-field {
+  margin: 5px;
+}
+
+.button-area button{
+  margin: 5px;
+}
+
+.result {
+  text-align: center;
+}
+
+.input-hours-mins mat-form-field {
+  max-width: 40%;
+}

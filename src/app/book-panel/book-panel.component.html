@@ -1,0 +1,56 @@
+<div class="container">
+  <mat-toolbar >
+    <span class="fill-space"></span>
+    <span>BOOKING</span>
+    <span class="fill-space"></span>
+  </mat-toolbar>
+  <ng-container *ngIf="status === 'booking'">
+  <form  [formGroup]="service.form" class="normal-form">
+    <mat-grid-list cols="1" rowHeight="100px">
+      <mat-grid-tile>
+        <input type="hidden" formControlName="$key">
+      </mat-grid-tile>
+      <mat-grid-tile class="input-hours-mins">
+        <mat-form-field>
+          <mat-label>Hours</mat-label>
+        <input formControlName="hours" matInput placeholder="Hours">
+          <mat-error *ngIf="service.form.controls['hours'].errors?.required"> This field is mandatory.</mat-error>
+          <mat-error *ngIf="service.form.controls['hours'].errors?.invalidHours">Hours should be a number between 0 to 6.</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Minutes</mat-label>
+          <input formControlName="mins" matInput placeholder="Minutes">
+          <mat-error *ngIf="service.form.controls['mins'].errors?.required"> This field is mandatory.</mat-error>
+          <mat-error *ngIf="service.form.controls['mins'].errors?.invalidMinutes">Minutes should be a number between 1 to 59.</mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field>
+          <mat-label>Choose a date</mat-label>
+          <input matInput formControlName="date" [min]="service.minDate" [max] = 'service.maxDate' [matDatepicker]="picker">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field>
+        <mat-select formControlName="time" placeholder="Time">
+          <ng-container *ngFor="let time of service.timeList">
+          <mat-option  value={{time}}>{{time}}</mat-option>
+          </ng-container>
+        </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile class="button-area">
+        <button mat-stroked-button  type="submit" [disabled]="service.form.invalid" (click)="handleSubmit()" >Submit</button>
+        <button mat-stroked-button  type="clear" (click)="service.form.reset()">Clear</button>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </form>
+  </ng-container>
+  <ng-container *ngIf = "status === 'result'" >
+    <h2 class="result">
+    The cost is ${{result}}.
+    </h2>
+  </ng-container>
+</div>
