@@ -47,7 +47,7 @@ export class BookPanelComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.records.forEach((ele) => {
-      console.log(ele.form);
+      //console.log(ele.form);
     } )
   }
 
@@ -58,7 +58,7 @@ export class BookPanelComponent implements OnInit, AfterViewInit {
   handleSubmit($event): void {
     this.recordData = [];
     this.records.forEach(ele => {
-      console.log(ele.exist);
+      //console.log(ele.exist);
       if(ele.exist) {
         let singleData = ele.submitRecord();
         if (singleData) {
@@ -73,11 +73,11 @@ export class BookPanelComponent implements OnInit, AfterViewInit {
     const { error, value } = ics.createEvents(this.recordData
      );
     if (error) {
-      console.log(error);
+      //console.log(error);
       return;
     }
-    console.log(typeof value);
-    console.log(value);
+    //console.log(typeof value);
+    //console.log(value);
     this.loadFile(new Date().toUTCString() + '.ics', value);
   }
 

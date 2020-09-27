@@ -59,13 +59,14 @@ export class SingleRecordComponent implements OnInit {
       let start = [];
       let date = this.form.get('date').value;
       let advance = this.form.get('advance').value;
-      console.log(date);
+      //console.log(date);
       if (advance) {
         let d = parseInt(advance);
-        console.log(d);
+        // console.log(d);
         date = date.setDate(date.getDate() - d);
         date = new Date(date);
-        console.log(date);
+        this.record.title = this.record.title + "_" + d +"_days"+"_left";
+        // console.log(date);
       }
       let year = date.getFullYear();
       let month = date.getMonth() + 1;
@@ -73,7 +74,7 @@ export class SingleRecordComponent implements OnInit {
       start.push(year);
       start.push(month);
       start.push(day);
-      console.log(start);
+      // console.log(start);
       let time = this.form.get('time').value;
       let str = time.split(":");
       start.push(Number(str[0]));
