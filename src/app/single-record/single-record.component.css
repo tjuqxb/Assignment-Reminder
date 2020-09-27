@@ -4,10 +4,11 @@
 
 .normal-form {
   margin: 10px;
+
 }
 
 mat-form-field {
-  margin: 5px;
+  margin: 2px;
 }
 
 .button-area button{
@@ -20,9 +21,4 @@ mat-form-field {
 
 .input-hours-mins mat-form-field {
   max-width: 40%;
-}
-
-.single-input {
-  width: 150px;
-  margin-left: 30px;
 }

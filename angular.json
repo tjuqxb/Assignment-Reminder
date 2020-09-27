@@ -123,5 +123,8 @@
       }
     }
   },
-  "defaultProject": "booking-test"
+  "defaultProject": "booking-test",
+  "cli": {
+    "analytics": false
+  }
 }
