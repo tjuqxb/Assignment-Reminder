@@ -79,7 +79,7 @@ export class SingleRecordComponent implements OnInit {
         // console.log(d);
         date = date.setDate(date.getDate() - d);
         date = new Date(date);
-        this.record.title = this.record.title + "_" + d +"_days"+"_left";
+        this.record.title = this.record.title + "_" + d +"days"+"_left";
         // console.log(date);
       }
       let year = date.getFullYear();
