@@ -68,7 +68,7 @@ export class SingleRecordComponent implements OnInit {
 
   submitRecord(): any {
     if (this.form.valid) {
-      let title = this.form.get('course') + '_' + this.form.get('title').value;
+      let title = this.form.get('course').value + '_' + this.form.get('title').value;
       this.record.title = title;
       let start = [];
       let date = this.form.get('date').value;
