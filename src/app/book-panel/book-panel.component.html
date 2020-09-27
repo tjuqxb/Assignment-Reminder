@@ -5,20 +5,41 @@
     <span>Assignment Reminder</span>
     <span class="fill-space"></span>
   </mat-toolbar>
+
+
+
   <form  [formGroup]="form" class="normal-form" >
-  <mat-form-field class = "single-input" >
-    <mat-label>Email Address</mat-label>
-    <input  formControlName="email" matInput placeholder="Email Address">
-    <mat-error *ngIf="form.controls['email'].errors?.email"> This field is an email address.</mat-error>
-  </mat-form-field>
+<!--  <mat-form-field class = "single-input" >-->
+<!--    <mat-label>Email Address</mat-label>-->
+<!--    <input  formControlName="email" matInput placeholder="Email Address">-->
+<!--    <mat-error *ngIf="form.controls['email'].errors?.email"> This field is an email address.</mat-error>-->
+<!--  </mat-form-field>-->
   </form>
+  <div style="width: 100%; height: 100px" fxLayout="row" fxLayoutAlign="space-between">
+    <mat-chip-list aria-label="Fish selection" style="margin-left: 200px">
+      <mat-chip *ngFor="let course of service.coursesList">{{course}}</mat-chip>
+    </mat-chip-list>
+
+    <div fxLayout = 'row'>
+      <form  [formGroup]="form" class="normal-form" >
+        <mat-form-field class = "single-input" >
+          <mat-label>course name</mat-label>
+          <input  formControlName="course" matInput placeholder="course name">
+        </mat-form-field>
+      </form>
+
+    <div>
+      <button mat-stroked-button  type="submit" (click)="addCourse()" style="margin-right: 20px">Add Course</button>
+    </div>
+    </div>
+  </div>
 
   <app-single-record fxLayout="row wrap" fxFlexAlign="center" *ngFor="let item of listAdd"></app-single-record>
 
 
   <div fxLayout="row" fxFlexAlign="end">
-    <button mat-stroked-button  type="submit" (click)="addOne()" style="margin-right: 20px">Add</button>
-    <button mat-stroked-button  type="submit" (click)="handleSubmit($event)" style="margin-right: 100px">Submit</button>
+    <button mat-stroked-button  type="submit" (click)="addOne()" style="margin-right: 20px">Add Assignment</button>
+    <button mat-stroked-button  type="submit" (click)="handleSubmit($event)" style="margin-right: 150px">Submit</button>
   </div>
 
   <!--        <button mat-stroked-button  type="submit" [disabled]="form.invalid" (click)="handleSubmit()" >Submit</button>-->

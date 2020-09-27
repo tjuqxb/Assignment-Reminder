@@ -5,6 +5,14 @@
       <input type="hidden" formControlName="$key">
 
       <mat-form-field>
+        <mat-select formControlName="course" placeholder="course">
+          <ng-container *ngFor="let course of service.coursesList">
+            <mat-option  value={{course}}>{{course}}</mat-option>
+          </ng-container>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
         <mat-label>Assignment Name</mat-label>
         <input formControlName="title" matInput placeholder="Assignment Name">
         <mat-error *ngIf="form.controls['title'].errors?.required"> This field is mandatory.</mat-error>
@@ -28,21 +36,33 @@
 
       <mat-form-field>
         <mat-label>Duration: hours</mat-label>
-        <input formControlName="hours" matInput placeholder="Hours">
+        <mat-select formControlName="hours" placeholder="Duration: hours">
+          <ng-container *ngFor="let hour of hours">
+            <mat-option  value={{hour}}>{{hour}}</mat-option>
+          </ng-container>
+        </mat-select>
         <mat-error *ngIf="form.controls['hours'].errors?.required"> This field is mandatory.</mat-error>
         <mat-error *ngIf="form.controls['hours'].errors?.invalidHours">Hours should be a number between 0 to 24.</mat-error>
       </mat-form-field>
 
       <mat-form-field>
         <mat-label>Duration: minutes</mat-label>
-        <input formControlName="mins" matInput placeholder="Minutes">
+        <mat-select formControlName="mins" placeholder="Duration: minutes">
+          <ng-container *ngFor="let min of mins">
+            <mat-option  value={{min}}>{{min}}</mat-option>
+          </ng-container>
+        </mat-select>
         <mat-error *ngIf="form.controls['mins'].errors?.required"> This field is mandatory.</mat-error>
         <mat-error *ngIf="form.controls['mins'].errors?.invalidMinutes">Minutes should be a number between 0 to 59.</mat-error>
       </mat-form-field>
 
       <mat-form-field>
-        <mat-label>Remind in advance</mat-label>
-        <input formControlName="advance" matInput placeholder="Advance(Days)">
+        <mat-label>Remind in advance: days</mat-label>
+        <mat-select formControlName="advance" placeholder="Remind in advance:days">
+          <ng-container *ngFor="let day of advance">
+            <mat-option  value={{day}}>{{day}}</mat-option>
+          </ng-container>
+        </mat-select>
         <mat-error *ngIf="form.controls['advance'].errors?.invalidMinutes">Advance should be a number between 0 to 120.</mat-error>
       </mat-form-field>
 

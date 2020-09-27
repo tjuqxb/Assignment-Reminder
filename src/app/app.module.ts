@@ -8,6 +8,7 @@ import { MaterialModule} from './material/material.module';
 import {BookingService} from './shared/booking.service';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SingleRecordComponent } from './single-record/single-record.component';
+import {MatChipsModule} from "@angular/material/chips";
 
 
 
@@ -21,7 +22,8 @@ import { SingleRecordComponent } from './single-record/single-record.component';
     BrowserModule,
     BrowserAnimationsModule,
     MaterialModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatChipsModule
 
   ],
   providers: [BookingService],

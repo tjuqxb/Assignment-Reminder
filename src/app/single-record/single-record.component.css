@@ -9,7 +9,9 @@
 
 mat-form-field {
   margin: 2px;
+  width: 150px;
 }
+
 
 .button-area button{
   margin: 5px;

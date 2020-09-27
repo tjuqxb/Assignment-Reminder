@@ -28,11 +28,16 @@ export class SingleRecordComponent implements OnInit {
     '12:30', '13:00', '13:30', '14:00', '14:30', '15:00', '15:30', '16:00', '16:30', '17:00', '17:30', '18:00', '18:30', '19:00',
     '19:30', '20:00', '20:30', '21:00', '21:30', '22:00', '22:30', '23:00', '23:30'
   ];
+  public hours = [];
+  public mins = [];
+  public advance = [];
+
 
 
   constructor(public service: BookingService) {
     this.form = new FormGroup({
       $key: new FormControl(null),
+      course: new FormControl(''),
       title: new  FormControl('',[Validators.required]),
       date: new FormControl('', [Validators.required]),
       time: new FormControl(1, Validators.required),
@@ -46,6 +51,15 @@ export class SingleRecordComponent implements OnInit {
   ngOnInit(): void {
     this.zone = Intl.DateTimeFormat().resolvedOptions().timeZone;
     this.record = {};
+    for (let i = 0; i < 24; i++) {
+      this.hours.push(String(i));
+    }
+    for (let i = 0; i < 12; i++) {
+      this.mins.push(String(i * 5));
+    }
+    for (let i = 0; i < 30; i++) {
+      this.advance.push(String(i));
+    }
   }
 
   deleteRecord():void {
@@ -54,7 +68,7 @@ export class SingleRecordComponent implements OnInit {
 
   submitRecord(): any {
     if (this.form.valid) {
-      let title = this.form.get('title').value;
+      let title = this.form.get('course') + '_' + this.form.get('title').value;
       this.record.title = title;
       let start = [];
       let date = this.form.get('date').value;
@@ -91,7 +105,6 @@ export class SingleRecordComponent implements OnInit {
       if (this.form.get('location').value) {
         this.record.location = this.form.get('location').value;
       }
-
 
       // console.log(this.form.get('description').value);
       return this.record;

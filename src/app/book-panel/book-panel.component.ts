@@ -26,11 +26,14 @@ export class BookPanelComponent implements OnInit, AfterViewInit {
   public recordData = [];
   public geo = {lon: 0, lat: 0};
   public set = false;
+  public currentTag = '';
+  public coursesList = [];
 
 
   constructor(public service: BookingService) {
     this.form = new FormGroup({
-      email: new FormControl('',[Validators.email])
+      email: new FormControl('',[Validators.email]),
+      course: new FormControl(null)
     });
   }
 
@@ -43,6 +46,10 @@ export class BookPanelComponent implements OnInit, AfterViewInit {
       that.set = true;
     });
 
+  }
+
+  addCourse() {
+    this.service.coursesList.push(this.form.get('course').value);
   }
 
   ngAfterViewInit(): void {
